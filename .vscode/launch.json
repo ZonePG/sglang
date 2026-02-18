@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug: launch_router",
+            "program": "/root/sglang/.venv/bin/python",
+            "args": [
+                "-m",
+                "sglang_router.launch_router",
+                "--worker-urls",
+                "http://localhost:8000",
+                "http://localhost:8001",
+                "--policy",
+                "cache_aware",
+            ],
+            "cwd": "${workspaceFolder}",
+        },
+        {
+            "name": "Python: attach",
+            "type": "debugpy",
+            "request": "attach",
+            "listen": {
+                "host": "localhost",
+                "port": 5678
+            }
+        },
+        {
+            "type": "lldb",
+            "request": "attach",
+            "name": "Rust: attach",
+            "pid": "${command:pickMyProcess}" // use ${command:pickProcess} to pick other users' processes
+        },
+    ]
+}
